@@ -6,9 +6,13 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 20:31:52 by tborges-          #+#    #+#             */
-/*   Updated: 2024/03/07 20:31:53 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/04/02 19:12:52 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-
+void	ft_bzero(void *s, int n)
+{
+	ft_memset(s, '\0', n);
+}

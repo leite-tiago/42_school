@@ -6,8 +6,19 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 20:31:32 by tborges-          #+#    #+#             */
-/*   Updated: 2024/03/07 20:31:42 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/04/02 16:57:39 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+void	*ft_memset(void *b, int c, int len)
+{
+	int i;
 
+	i = 0;
+	while (i < len)
+	{
+		((unsigned char *)b)[i] = c;
+		i++;
+	}
+	return (b);
+}
