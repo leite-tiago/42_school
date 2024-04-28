@@ -6,13 +6,13 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 20:34:11 by tborges-          #+#    #+#             */
-/*   Updated: 2024/04/03 16:30:44 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/04/24 19:23:13 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	*ft_memcpy(void *dst, const void *src, int n)
 {
-	int i;
+	int	i;
 
 	if (!dst && !src)
 		return (0);
@@ -31,10 +31,9 @@ void	*ft_memcpy(void *dst, const void *src, int n)
 
 int	main(void)
 {
-	char dst1[50] = "Hello World, this is a test.";
-	char dst2[50] = "Hello World, this is a test.";
-
-	char src[50] = "Hello World, this is a banana.";
+	char	dst1[50] = "Hello World, this is a test.";
+	char	dst2[50] = "Hello World, this is a test.";
+	char	src[50] = "Hello World, this is a banana.";
 
 	printf("----------------------------\n");
 	printf("Before ft_memcpy(): %s\n", dst1);

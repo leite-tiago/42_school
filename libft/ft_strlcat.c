@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 20:35:52 by tborges-          #+#    #+#             */
-/*   Updated: 2024/04/03 13:53:37 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/04/24 19:23:49 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t c;
-	size_t d;
+	size_t	c;
+	size_t	d;
 
 	if (dstsize <= ft_strlen(dst))
 		return (dstsize + ft_strlen(src));

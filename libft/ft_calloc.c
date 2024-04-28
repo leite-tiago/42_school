@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 20:38:58 by tborges-          #+#    #+#             */
-/*   Updated: 2024/04/03 13:46:17 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/04/28 18:07:15 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	*ft_calloc(size_t count, size_t size)
 	void	*dst;
 
 	tot_size = size * count;
-	if (!(dst = malloc(tot_size)))
+	dst = malloc(tot_size);
+	if (!dst)
 		return (0);
 	ft_memset(dst, 0, tot_size);
 	return (dst);

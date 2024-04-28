@@ -6,11 +6,11 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 20:37:22 by tborges-          #+#    #+#             */
-/*   Updated: 2024/04/03 14:20:37 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/04/24 19:21:26 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isdigit(int c)
+int	ft_isdigit(int c)
 {
 	if ('0' <= c && c <= '9')
 		return (2048);
@@ -18,8 +18,8 @@ int		ft_isdigit(int c)
 }
 
 /*
-#include <stdio.h>
 #include <ctype.h>
+#include <stdio.h>
 
 int	main(void)
 {

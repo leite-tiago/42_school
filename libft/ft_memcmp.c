@@ -6,13 +6,13 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 20:35:05 by tborges-          #+#    #+#             */
-/*   Updated: 2024/04/03 13:46:00 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/04/24 19:23:01 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	size_t	i;
 

@@ -6,11 +6,11 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 20:37:51 by tborges-          #+#    #+#             */
-/*   Updated: 2024/04/03 14:24:12 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/04/24 19:22:42 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isascii(int c)
+int	ft_isascii(int c)
 {
 	if (0 <= c && c <= 127)
 		return (1);

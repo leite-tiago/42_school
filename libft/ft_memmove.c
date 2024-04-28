@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 20:34:39 by tborges-          #+#    #+#             */
-/*   Updated: 2024/04/03 18:23:20 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/04/24 19:23:21 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t i;
+	size_t	i;
 
 	if (!dst && !src)
 		return (0);
@@ -45,9 +45,9 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 int	main(void)
 {
-	char str1[50] = "Hello World, this is a test.";
-	char str2[50] = "Hello World, this is a test.";
-	char src[50] = "Hello banana.";
+	char	str1[50] = "Hello World, this is a test.";
+	char	str2[50] = "Hello World, this is a test.";
+	char	src[50] = "Hello banana.";
 
 	printf("----------------------------\n");
 	printf("Before ft_memset(): %s\n", str1);

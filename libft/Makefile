@@ -6,7 +6,7 @@
 #    By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/02 20:18:54 by tborges-          #+#    #+#              #
-#    Updated: 2024/04/03 13:40:52 by tborges-         ###   ########.fr        #
+#    Updated: 2024/04/24 19:16:51 by tborges-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,14 +28,7 @@ SRCS	= ft_isascii.c ft_isprint.c ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 			ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_strmapi.c
 OBJS	= $(SRCS:.c=.o)
 BONUS_S	= ft_lstsize.c ft_lstlast.c ft_lstadd_front.c ft_lstadd_back.c \
-			ft_lstnew.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c \
-			ft_swap_bonus.c ft_islower_bonus.c ft_isupper_bonus.c \
-			ft_iscntrl_bonus.c ft_isgraph_bonus.c ft_ispunct_bonus.c \
-			ft_isspace_bonus.c ft_isblank_bonus.c ft_isxdigit_bonus.c \
-			ft_putchar_bonus.c ft_putstr_bonus.c ft_putendl_bonus.c \
-			ft_putnbr_bonus.c ft_sqrt_bonus.c ft_strcmp_bonus.c \
-			ft_strcpy_bonus.c ft_strncpy_bonus.c ft_strstr_bonus.c \
-			ft_strcat_bonus.c ft_strncat_bonus.c ft_strndup_bonus.c
+			ft_lstnew.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 BONUS_O	= $(BONUS_S:.c=.o)
 
 all:		$(NAME)

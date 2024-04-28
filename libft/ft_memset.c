@@ -6,13 +6,13 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 20:31:32 by tborges-          #+#    #+#             */
-/*   Updated: 2024/04/03 16:22:52 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/04/24 19:23:29 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	*ft_memset(void *b, int c, int len)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < len)
@@ -29,8 +29,8 @@ void	*ft_memset(void *b, int c, int len)
 
 int	main(void)
 {
-	char str1[50] = "Hello World, this is a test.";
-	char str2[50] = "Hello World, this is a test.";
+	char	str1[50] = "Hello World, this is a test.";
+	char	str2[50] = "Hello World, this is a test.";
 
 	printf("----------------------------\n");
 	printf("Before ft_memset(): %s\n", str1);
