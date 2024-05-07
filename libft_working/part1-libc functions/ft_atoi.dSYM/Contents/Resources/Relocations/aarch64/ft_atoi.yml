@@ -1,8 +1,0 @@
----
-triple:          'arm64-apple-darwin'
-binary-path:     '/Users/tiagoleite/42/42_school/libft/libc/ft_atoi'
-relocations:
-  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _ft_atoi, symObjAddr: 0x0, symBinAddr: 0x100003BD8, symSize: 0x1B8 }
-  - { offsetInCU: 0x41, offset: 0x41, size: 0x8, addend: 0x0, symName: _ft_atoi, symObjAddr: 0x0, symBinAddr: 0x100003BD8, symSize: 0x1B8 }
-  - { offsetInCU: 0x93, offset: 0x93, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x1B8, symBinAddr: 0x100003D90, symSize: 0x148 }
-...

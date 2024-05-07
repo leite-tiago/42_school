@@ -6,30 +6,34 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 20:36:31 by tborges-          #+#    #+#             */
-/*   Updated: 2024/04/02 19:18:21 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/05/01 20:59:21 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strnstr(const char *haystack, const char *needle, int len)
-{
-	int	h;
-	int	n;
+#include "libft.h"
 
-	h = 0;
-	if (needle[0] == '\0')
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	if (!haystack && !len)
+		return (0);
+	if (needle[0] == '\0' || needle == haystack)
 		return ((char *)haystack);
-	while (haystack[h] != '\0')
+	while (haystack[i] != '\0')
 	{
-		n = 0;
-		while (haystack[h + n] == needle[n] && (h + n) < len)
+		j = 0;
+		while (haystack[i + j] == needle[j] && (i + j) < len)
 		{
-			if (haystack[h + n] == '\0' && needle[n] == '\0')
-				return ((char *)&haystack[h]);
-			n++;
+			if (haystack[i + j] == '\0' && needle[j] == '\0')
+				return ((char *)&haystack[i]);
+			j++;
 		}
-		if (needle[n] == '\0')
-			return ((char *)haystack + h);
-		h++;
+		if (needle[j] == '\0')
+			return ((char *)(haystack + i));
+		i++;
 	}
 	return (0);
 }

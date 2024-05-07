@@ -6,13 +6,15 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 20:31:32 by tborges-          #+#    #+#             */
-/*   Updated: 2024/04/24 19:23:29 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/05/01 21:06:39 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memset(void *b, int c, int len)
+#include "libft.h"
+
+void	*ft_memset(void *b, int c, size_t len)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < len)

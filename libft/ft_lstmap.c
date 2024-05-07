@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 18:59:22 by tborges-          #+#    #+#             */
-/*   Updated: 2024/04/28 18:09:57 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/05/01 21:10:06 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*new_lst;
-	t_list	*elem;
+	t_list	*new;
+	t_list	*node;
 
-	if (!lst)
-		return (0);
-	new_lst = 0;
+	if (!f || !lst)
+		return (NULL);
+	new = NULL;
 	while (lst)
 	{
-		elem = ft_lstnew(f(lst->content));
-		if (!elem)
+		node = ft_lstnew(f(lst->content));
+		if (!node)
 		{
-			ft_lstclear(&new_lst, del);
-			return (0);
+			ft_lstclear(&node, (*del));
+			return (NULL);
 		}
-		ft_lstadd_back(&new_lst, elem);
+		ft_lstadd_back(&new, node);
 		lst = lst->next;
 	}
-	return (new_lst);
+	return (new);
 }

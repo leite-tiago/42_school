@@ -6,13 +6,15 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 20:34:11 by tborges-          #+#    #+#             */
-/*   Updated: 2024/04/24 19:23:13 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/05/01 21:03:47 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memcpy(void *dst, const void *src, int n)
+#include "libft.h"
+
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	if (!dst && !src)
 		return (0);
