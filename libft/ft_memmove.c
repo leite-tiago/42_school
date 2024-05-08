@@ -31,6 +31,22 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	return (dst);
 }
 
+///////////////////////////////////
+
+void	*data_src;
+
+	if (!src && !dst)
+		return (dst);
+	if (src > dst)
+		dst = ft_memcpy(dst, src, len);
+	else
+	{
+		data_src = (void *)src;
+		while (len--)
+			((char *)dst)[len] = ((char *)data_src)[len];
+	}
+	return (dst);
+
 /*
 #include <stdio.h>
 #include <string.h>
