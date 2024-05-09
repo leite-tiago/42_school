@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 20:48:50 by tborges-          #+#    #+#             */
-/*   Updated: 2024/04/28 18:10:40 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/05/09 14:13:34 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!s1 || !s2 || !new_str)
 		return (0);
 	i = 0;
-	while (s1[i] != '\0')
+	while (s1[i])
 	{
 		new_str[i] = s1[i];
 		i++;
 	}
 	j = 0;
-	while (s2[j] != '\0')
+	while (s2[j])
 	{
 		new_str[i] = s2[j];
 		i++;

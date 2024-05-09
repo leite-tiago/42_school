@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 20:36:31 by tborges-          #+#    #+#             */
-/*   Updated: 2024/05/01 20:59:21 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/05/09 14:05:28 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,21 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 
 	i = 0;
 	if (!haystack && !len)
-		return (0);
+		return (NULL);
 	if (needle[0] == '\0' || needle == haystack)
 		return ((char *)haystack);
-	while (haystack[i] != '\0')
+	while (haystack[i])
 	{
 		j = 0;
-		while (haystack[i + j] == needle[j] && (i + j) < len)
+		while (haystack[i + j] == needle[j] && i + j < len)
 		{
-			if (haystack[i + j] == '\0' && needle[j] == '\0')
+			if (!haystack[i + j] && !needle[j])
 				return ((char *)&haystack[i]);
 			j++;
 		}
-		if (needle[j] == '\0')
+		if (!needle[j])
 			return ((char *)(haystack + i));
 		i++;
 	}
-	return (0);
+	return (NULL);
 }

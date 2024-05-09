@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 20:49:07 by tborges-          #+#    #+#             */
-/*   Updated: 2024/04/03 12:56:05 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/05/09 13:48:43 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	i;
 
 	if (!s1 || !set)
-		return (0);
+		return (NULL);
 	while (*s1 && ft_strchr(set, *s1))
 		s1++;
 	i = ft_strlen(s1);

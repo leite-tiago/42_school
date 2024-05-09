@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 20:35:36 by tborges-          #+#    #+#             */
-/*   Updated: 2024/05/01 21:06:21 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/05/09 14:10:31 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	}
 	return (src_len);
 }
+
 /*
 #include <stdio.h>
 #include <string.h>

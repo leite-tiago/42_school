@@ -6,46 +6,28 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 20:34:39 by tborges-          #+#    #+#             */
-/*   Updated: 2024/05/03 19:43:21 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/05/09 14:38:26 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char	*data_dst;
-	char	*data_src;
+	void	*temp;
 
-	if (!src && !dst)
-		return (NULL);
-	if (src > dst)
-		dst = ft_memcpy(dst, src, len);
+	temp = (void *)src;
+	if (!src && !dest)
+		return (dest);
+	if (src > dest)
+		ft_memcpy(dest, temp, n);
 	else
 	{
-		data_dst = (char *)dst;
-		data_src = (char *)src;
-		while (len--)
-			data_dst[len] = data_src[len];
+		while (n--)
+			((char *)dest)[n] = ((char *)temp)[n];
 	}
-	return (dst);
+	return (dest);
 }
-
-///////////////////////////////////
-
-void	*data_src;
-
-	if (!src && !dst)
-		return (dst);
-	if (src > dst)
-		dst = ft_memcpy(dst, src, len);
-	else
-	{
-		data_src = (void *)src;
-		while (len--)
-			((char *)dst)[len] = ((char *)data_src)[len];
-	}
-	return (dst);
 
 /*
 #include <stdio.h>
