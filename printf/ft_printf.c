@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:36:01 by tborges-          #+#    #+#             */
-/*   Updated: 2024/05/20 19:54:26 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/05/23 15:28:51 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,26 +24,22 @@
 
 int	print_format(char specifier, va_list ap)
 {
-	int	count;
-
-	count = 0;
 	if (specifier == 'c')
-		count += print_char(va_arg(ap, int));
+		return (print_char(va_arg(ap, int)));
 	else if (specifier == 's')
-		count += print_str(va_arg(ap, char *));
+		return (print_str(va_arg(ap, char *)));
 	else if (specifier == 'p')
-		count += print_ptr(va_arg(ap, unsigned long long));
+		return (print_ptr(va_arg(ap, unsigned long long)));
 	else if (specifier == 'd' || specifier == 'i')
-		count += print_nbr(va_arg(ap, int));
+		return (print_nbr(va_arg(ap, int)));
 	else if (specifier == 'u')
-		count += print_unsigned(va_arg(ap, unsigned int));
+		return (print_unsigned(va_arg(ap, unsigned int)));
 	else if (specifier == 'x' || specifier == 'X')
-		count += print_hex(va_arg(ap, unsigned int), specifier);
+		return (print_hex(va_arg(ap, unsigned int), specifier));
 	else if (specifier == '%')
-		count += print_percent();
+		return (print_percent());
 	else
-		count += write(1, &specifier, 1);
-	return (count);
+		return (0);
 }
 
 int	ft_printf(const char *format, ...)

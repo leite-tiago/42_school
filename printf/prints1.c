@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:10:22 by tborges-          #+#    #+#             */
-/*   Updated: 2024/05/20 20:05:54 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/05/23 14:30:54 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ int	ptr_len(uintptr_t num)
 	return (len);
 }
 
-void	ft_put_ptr(uintptr_t num)
+void	put_ptr(uintptr_t num)
 {
 	if (num >= 16)
 	{
-		ft_put_ptr(num / 16);
-		ft_put_ptr(num % 16);
+		put_ptr(num / 16);
+		put_ptr(num % 16);
 	}
 	else
 	{

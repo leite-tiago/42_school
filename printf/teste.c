@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 19:44:18 by tborges-          #+#    #+#             */
-/*   Updated: 2024/05/20 19:44:22 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/05/23 15:33:03 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ int	main(void)
 	int	count;
 
 	count = print_str("ola banana 2");
-	printf("\ncount: %d", count);
+	ft_printf("\ncount: %d", count);
 }
