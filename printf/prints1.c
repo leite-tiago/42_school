@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:10:22 by tborges-          #+#    #+#             */
-/*   Updated: 2024/05/23 14:30:54 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/05/25 16:53:46 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	print_str(char *str)
 {
 	int	count;
 
+	if (!str)
+		return (write(1, "(null)", 6));
 	count = 0;
 	while (str[count])
 	{

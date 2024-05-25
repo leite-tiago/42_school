@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 19:45:58 by tborges-          #+#    #+#             */
-/*   Updated: 2024/05/23 15:24:37 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/05/25 17:07:45 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,41 @@
 
 int	print_nbr(int nbr)
 {
-	int		len;
-	char	*num;
+	int		i;
+	int		end;
+	char	temp;
+	char	buffer[12];
+	int		start;
 
-	len = 0;
-	num = ft_itoa(nbr);
-	len = print_str(num);
-	free(num);
-	return (len);
+	i = 0;
+	if (nbr == -2147483648)
+	{
+		return (write(1, "-2147483648", 11));
+	}
+	if (nbr < 0)
+	{
+		buffer[i++] = '-';
+		nbr = -nbr;
+	}
+	start = i;
+	do
+	{
+		buffer[i++] = '0' + nbr % 10;
+		nbr /= 10;
+	} while (nbr > 0);
+	end = i - 1;
+	while (start < end)
+	{
+		temp = buffer[start];
+		buffer[start] = buffer[end];
+		buffer[end] = temp;
+		start++;
+		end--;
+	}
+	return (write(1, buffer, i));
 }
 
-int	ft_num_len(unsigned int num)
+int	num_len(unsigned int num)
 {
 	int	len;
 
@@ -48,7 +72,7 @@ int	print_unsigned(unsigned int n)
 
 	if (n == 0)
 		return (print_char('0'));
-	len = ft_num_len(n);
+	len = num_len(n);
 	num = (char *)malloc(sizeof(char) * (len + 1));
 	if (!num)
 		return (0);
@@ -56,8 +80,10 @@ int	print_unsigned(unsigned int n)
 	while (n != 0)
 	{
 		num[len - 1] = n % 10 + '0';
-		n = n / 10;
+		n /= 10;
 		len--;
 	}
-	return (print_str(num));
+	len = print_str(num);
+	free(num);
+	return (len);
 }

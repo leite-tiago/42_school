@@ -6,7 +6,7 @@
 #    By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/20 17:44:25 by tborges-          #+#    #+#              #
-#    Updated: 2024/05/23 15:37:32 by tborges-         ###   ########.fr        #
+#    Updated: 2024/05/25 16:45:25 by tborges-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,19 +17,14 @@ CFLAGS		= -Wall -Werror -Wextra
 RM			= rm -f
 AR			= ar rcs
 
-LIBFT = libft/libft.a
-
 SRCS = ft_printf.c prints1.c prints2.c prints3.c
 
 OBJS	= $(SRCS:.c=.o)
 
 all:		$(NAME)
 
-$(NAME):	$(OBJS) $(INCLUDE) $(LIBFT)
-			ar -rcs $(NAME) $(OBJS) $(LIBFT)
-
-$(LIBFT):
-	@make -s -C ./libft
+$(NAME):	$(OBJS) $(INCLUDE)
+			ar -rcs $(NAME) $(OBJS)
 
 clean:
 			rm -f $(OBJS) $(BONUS_O)
