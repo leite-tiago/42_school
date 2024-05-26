@@ -6,53 +6,38 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 20:45:25 by tborges-          #+#    #+#             */
-/*   Updated: 2024/05/26 18:00:01 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/05/26 19:10:27 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ptr_len(uintptr_t num)
+int	print_nbr(int nbr)
 {
-	int	len;
+	unsigned int	n;
+	int				count;
 
-	len = 0;
-	while (num)
+	count = 0;
+	if (nbr < 0)
 	{
-		len++;
-		num /= 16;
-	}
-	return (len);
-}
-
-void	put_ptr(uintptr_t num)
-{
-	if (num >= 16)
-	{
-		put_ptr(num / 16);
-		put_ptr(num % 16);
+		count += print_char('-');
+		n = (unsigned int)(-nbr);
 	}
 	else
-	{
-		if (num <= 9)
-			print_char((num + '0'));
-		else
-			print_char((num - 10 + 'a'));
-	}
+		n = (unsigned int)nbr;
+	if (n >= 10)
+		count += print_nbr(n / 10);
+	count += print_char(n % 10 + '0');
+	return (count);
 }
 
-int	print_ptr(unsigned long long ptr)
+int	print_unsigned(unsigned int num)
 {
 	int	count;
 
 	count = 0;
-	count += print_str("0x");
-	if (ptr == 0)
-		count += print_char('0');
-	else
-	{
-		put_ptr(ptr);
-		count += ptr_len(ptr);
-	}
+	if (num >= 10)
+		count += print_unsigned(num / 10);
+	count += print_char(num % 10 + '0');
 	return (count);
 }

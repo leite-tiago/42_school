@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_hex&percent.c                                :+:      :+:    :+:   */
+/*   prints3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 19:53:36 by tborges-          #+#    #+#             */
-/*   Updated: 2024/05/25 20:57:51 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/05/26 22:40:59 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,47 +16,32 @@
 
 #include "ft_printf.h"
 
-int	hex_len(unsigned int num)
+int	print_hex(unsigned long long num, const char specifier)
 {
-	int	len;
+	int		count;
+	char	buffer[17];
+	char	*hex_digits;
+	int		i;
 
-	len = 0;
-	while (num != 0)
-	{
-		len++;
-		num = num / 16;
-	}
-	return (len);
-}
-
-void	put_hex(unsigned int num, const char format)
-{
-	if (num >= 16)
-	{
-		put_hex(num / 16, format);
-		put_hex(num % 16, format);
-	}
+	if (specifier == 'X')
+		hex_digits = "0123456789ABCDEF";
 	else
-	{
-		if (num <= 9)
-			print_char((num + '0'));
-		else
-		{
-			if (format == 'x')
-				print_char((num - 10 + 'a'));
-			if (format == 'X')
-				print_char((num - 10 + 'A'));
-		}
-	}
-}
-
-int	print_hex(unsigned int num, const char specifier)
-{
+		hex_digits = "0123456789abcdef";
+	count = 0;
+	i = 0;
 	if (num == 0)
-		return (print_char('0'));
+		count += print_char('0');
 	else
-		put_hex(num, specifier);
-	return (hex_len(num));
+	{
+		while (num != 0)
+		{
+			buffer[i++] = hex_digits[num % 16];
+			num /= 16;
+		}
+		while (i > 0)
+			count += print_char(buffer[--i]);
+	}
+	return (count);
 }
 
 int	print_percent(void)

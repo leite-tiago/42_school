@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   teste.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/02 20:51:26 by tborges-          #+#    #+#             */
-/*   Updated: 2024/04/24 19:24:28 by tborges-         ###   ########.fr       */
+/*   Created: 2024/05/26 19:21:50 by tborges-          #+#    #+#             */
+/*   Updated: 2024/05/26 22:13:00 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
+#include <stdio.h>
 
-void	ft_putstr_fd(char *s, int fd)
+int	main(void)
 {
-	int	i;
+	int	count;
 
-	if (s != NULL)
-	{
-		i = 0;
-		while (s[i])
-		{
-			ft_putchar_fd(s[i], fd);
-			i++;
-		}
-	}
+	printf("////////////////////\n");
+	ft_printf("mine:\n");
+	count = ft_printf("%p\n", NULL); // alterar aqui
+	ft_printf("my count: %i\n", count);
+	printf("////////////////////\n");
+	printf("original:\n");
+	count = printf("%p\n", NULL); // alterar aqui
+	ft_printf("original count: %i\n", count);
+	printf("////////////////////\n");
 }
