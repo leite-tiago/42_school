@@ -6,7 +6,7 @@
 #    By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/20 17:44:25 by tborges-          #+#    #+#              #
-#    Updated: 2024/05/25 21:01:07 by tborges-         ###   ########.fr        #
+#    Updated: 2024/05/26 17:57:26 by tborges-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS		= -Wall -Werror -Wextra
 RM			= rm -f
 AR			= ar rcs
 
-SRCS = ft_printf.c print_char&str.c print_nbr&uns.c print_hex&percent.c
+SRCS = ft_printf.c prints1.c prints2.c prints3.c
 
 OBJS	= $(SRCS:.c=.o)
 
