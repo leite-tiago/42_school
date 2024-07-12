@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/20 17:12:44 by tborges-          #+#    #+#             */
-/*   Updated: 2024/05/27 15:24:43 by tborges-         ###   ########.fr       */
+/*   Created: 2024/06/25 16:56:36 by tborges-          #+#    #+#             */
+/*   Updated: 2024/07/12 13:08:35 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-# include <stdarg.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
+
 # include <stdlib.h>
 # include <unistd.h>
 
-int	ft_printf(const char *format, ...);
-int	print_char(int c);
-int	print_str(char *str);
-int	print_ptr(unsigned long long ptr);
-int	print_nbr(int nbr);
-int	print_unsigned(unsigned int num);
-int	print_hex(unsigned long long num, const char specifier);
-int	print_percent(void);
+// typedef struct s_list
+// {
+// 	char			*str_buf;
+// 	struct s_list	*next;
+// }					t_list;
+
+char	*get_next_line(int fd);
+char	*ft_strjoin(char *line, char *buff);
+char	*ft_strchr(char *s, int c);
+size_t	ft_strlen(char *s);
+char	*new_line(char *line);
+char	*ft_get_line(int fd, char *line);
+char	*ft_get_next_line(char	*line);
+
 
 #endif
