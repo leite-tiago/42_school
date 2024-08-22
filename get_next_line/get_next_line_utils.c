@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 16:56:39 by tborges-          #+#    #+#             */
-/*   Updated: 2024/07/12 13:07:48 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/07/12 17:13:40 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ char	*ft_strchr(char *s, int c)
 
 char	*ft_strjoin(char *line, char *buff)
 {
+	char	*str;
 	size_t	i;
 	size_t	j;
-	char	*str;
 
 	if (!line)
 	{

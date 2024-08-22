@@ -1,0 +1,5 @@
+input_test.txt
+
+Hello world! This is a example of
+a text for testing the algorithm
+Here I put the new line.

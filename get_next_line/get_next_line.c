@@ -6,66 +6,40 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 16:57:00 by tborges-          #+#    #+#             */
-/*   Updated: 2024/07/12 13:06:37 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/08/09 00:34:32 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_get_line(int fd, char *line)
+char	*read_line(int fd, char *line)	// ler a linha para o buffer e guardar em line
 {
 	char	*buffer;
-	ssize_t	read_bytes;
+	ssize_t	bytes_read;
 
 	buffer = (char *)malloc(BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
-	read_bytes = 1;
-	while (!ft_strchr(line, '\n') && read_bytes > 0)
+	bytes_read = 1;
+	while (!ft_strchr(line, '\n') && bytes_read > 0)
 	{
-		read_bytes = read(fd, buffer, BUFFER_SIZE);
-		if (read_bytes == -1)
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read == -1)
 		{
 			free(buffer);
 			return (NULL);
 		}
-		buffer[read_bytes] = '\0';
+		buffer[bytes_read] = '\0';
 		line = ft_strjoin(line, buffer);
 	}
 	free(buffer);
 	return (line);
 }
 
-char	*new_line(char *line)
+char	*get_line(char *line)	// "polir" a linha
 {
-	int		i;
-	int		j;
 	char	*str;
-
-	i = 0;
-	while (line[i] && line[i] != '\n')
-		i++;
-	if (!line[i])
-	{
-		free(line);
-		return (NULL);
-	}
-	str = (char *)malloc(sizeof(char) * (ft_strlen(line) - i + 1));
-	if (!str)
-		return (NULL);
-	i++;
-	j = 0;
-	while (line[i])
-		str[j++] = line[i++];
-	str[j] = '\0';
-	free(line);
-	return (str);
-}
-
-char	*ft_get_next_line(char *line)
-{
 	int		i;
-	char	*str;
 
 	i = 0;
 	if (!line[i])
@@ -90,38 +64,72 @@ char	*ft_get_next_line(char *line)
 	return (str);
 }
 
+char	*new_line(char *line)	// limpar linha antiga e guardar o que estava depois do \n
+{
+	char	*str;
+	int		i;
+	int		j;
+
+	i = 0;
+	while (line[i] && line[i] != '\n')
+		i++;
+	if (!line[i])	// se não houver nada depois do \n podemos limpar a linha toda
+	{
+		free(line);
+		return (NULL);
+	}
+	str = (char *)malloc(sizeof(char) * ft_strlen(line) - i + 1);
+	if (!str)
+		return (NULL);
+	i++;
+	j = 0;
+	while (line[i])		// guardar o que estava depois do \n
+		str[j++] = line[i++];
+	str[j] = '\0';
+	free(line);
+	return (str);
+}
+
 char	*get_next_line(int fd)
 {
-	static char			*line;
-	char				*next_line;
+	static char	*line;
+	char		*next_line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	line = ft_get_line(fd, line);
+	line = read_line(fd, line);
 	if (!line)
 		return (NULL);
-	next_line = ft_get_next_line(line);
+	next_line = get_line(line);
 	line = new_line(line);
 	return (next_line);
 }
 
-// #include "get_next_line.h"
+/**
+ * input_test.txt *
+ *
+ * Hello world! This is a example of
+ * a text for testing the algorithm
+ * Here I put the new line.
+ */
 
-// char	*get_next_line(int fd)
-// {
-// 	static t_list	*list = NULL;
-// 	char			*next_line;
-
-// 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &next_line, 0) < 0)
-// 		return (NULL);
-
-// 	creat_list(&list, fd);
-
-// 	if (list == NULL)
-// 		return (NULL);
-
-// 	next_line = get_line(list);
-// 	polish_list(&list);
-
-// 	return (next_line);
-// }
+/**
+ * main.c *
+ *
+ * #include "get_next_line.h"
+ * #include <fcntl.h>
+ * #include <stdio.h>
+ *
+ * int main ()
+ * {
+ * 	int fd;
+ * 	char *line;
+ * 	int lines;
+ *
+ * 	lines = 1;
+ * 	fd = open("input_test.txt", O_RDONLY);
+ *
+ * 	while ((line = get_next_line(fd)))
+ * 		printf("%d->%s\n", lines++, line);
+ * }
+ */
