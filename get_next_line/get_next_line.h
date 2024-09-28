@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 16:56:36 by tborges-          #+#    #+#             */
-/*   Updated: 2024/07/12 17:03:19 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/08/22 10:47:07 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-
-// typedef struct s_list
-// {
-// 	char			*str_buf;
-// 	struct s_list	*next;
-// }					t_list;
 
 // main functions
 char	*get_next_line(int fd);

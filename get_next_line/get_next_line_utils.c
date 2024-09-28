@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 16:56:39 by tborges-          #+#    #+#             */
-/*   Updated: 2024/07/12 17:13:40 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/08/22 10:46:22 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_strchr(char *s, int c)
 	if (!s)
 		return (0);
 	if (c == '\0')
-		return ((char *)&s[ft_strlen(s)]);
+		return ((char *) &s[ft_strlen(s)]);
 	while (s[i] != '\0')
 	{
 		if (s[i] == (char) c)
@@ -55,7 +55,7 @@ char	*ft_strjoin(char *line, char *buff)
 	}
 	if (!line || !buff)
 		return (NULL);
-	str = malloc(sizeof(char) * ((ft_strlen(line) + ft_strlen(buff)) + 1));
+	str = malloc(sizeof(char) * (ft_strlen(line) + ft_strlen(buff) + 1));
 	if (str == NULL)
 		return (NULL);
 	i = -1;

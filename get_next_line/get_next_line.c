@@ -6,13 +6,18 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 16:57:00 by tborges-          #+#    #+#             */
-/*   Updated: 2024/08/09 00:34:32 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/08/22 12:01:38 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*read_line(int fd, char *line)	// ler a linha para o buffer e guardar em line
+/**
+ * Ler texto para o buffer através da função read, o texto vai ser guardado em
+ * pedaços de tamanho BUFFER_SIZE até encontrar '\n', cada pedaço de texto vai
+ * ser junto à linha usando o ft_strjoin
+ */
+char	*read_line(int fd, char *line)
 {
 	char	*buffer;
 	ssize_t	bytes_read;
@@ -21,7 +26,7 @@ char	*read_line(int fd, char *line)	// ler a linha para o buffer e guardar em li
 	if (!buffer)
 		return (NULL);
 	bytes_read = 1;
-	while (!ft_strchr(line, '\n') && bytes_read > 0)
+	do
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
@@ -32,11 +37,20 @@ char	*read_line(int fd, char *line)	// ler a linha para o buffer e guardar em li
 		buffer[bytes_read] = '\0';
 		line = ft_strjoin(line, buffer);
 	}
+	while (!ft_strchr(buffer, '\n') && bytes_read > 0);
 	free(buffer);
 	return (line);
 }
 
-char	*get_line(char *line)	// "polir" a linha
+/**
+ * A função anterior guarda o texto em pedaços de tamanho BUFFER_SIZE, isto
+ * pode causar que o '\n' fique noutro lugar além do fim da linha.
+ * O objetivo desta função é "limpar" o que estiver entre o '\n' e o fim da
+ * linha retornando a linha já no seu estado final. Digo "limpar" porque vamos
+ * precisar deste pedaço de texto para a próxima linha, por este motivo é criada
+ * uma nova string em vez de apenas limpar a própria linha.
+ */
+char	*get_line(char *line)
 {
 	char	*str;
 	int		i;
@@ -64,7 +78,12 @@ char	*get_line(char *line)	// "polir" a linha
 	return (str);
 }
 
-char	*new_line(char *line)	// limpar linha antiga e guardar o que estava depois do \n
+/**
+ * O objetivo desta função é limpar a variável line, guardando o pedaço de
+ * texto referido na função anterior para ser usado na próxima vez que
+ * o programa for usado.
+ */
+char	*new_line(char *line)
 {
 	char	*str;
 	int		i;
@@ -73,7 +92,7 @@ char	*new_line(char *line)	// limpar linha antiga e guardar o que estava depois 
 	i = 0;
 	while (line[i] && line[i] != '\n')
 		i++;
-	if (!line[i])	// se não houver nada depois do \n podemos limpar a linha toda
+	if (!line[i])
 	{
 		free(line);
 		return (NULL);
@@ -83,13 +102,16 @@ char	*new_line(char *line)	// limpar linha antiga e guardar o que estava depois 
 		return (NULL);
 	i++;
 	j = 0;
-	while (line[i])		// guardar o que estava depois do \n
+	while (line[i])
 		str[j++] = line[i++];
 	str[j] = '\0';
 	free(line);
 	return (str);
 }
 
+/**
+ * Função principal
+ */
 char	*get_next_line(int fd)
 {
 	static char	*line;
@@ -106,7 +128,7 @@ char	*get_next_line(int fd)
 }
 
 /**
- * input_test.txt *
+ * input_test.txt
  *
  * Hello world! This is a example of
  * a text for testing the algorithm

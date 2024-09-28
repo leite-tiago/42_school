@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 19:53:36 by tborges-          #+#    #+#             */
-/*   Updated: 2024/05/26 23:15:26 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/05/27 15:24:32 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #include "ft_printf.h"
 
-int	print_hex(unsigned int num, const char specifier)
+int	print_hex(unsigned long long num, const char specifier)
 {
 	int		count;
 	char	buffer[17];
