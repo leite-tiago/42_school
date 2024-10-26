@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 23:48:56 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/26 15:54:22 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/10/26 22:56:41 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	main(int argc, char *argv[])
 		if (stack_len(a) == 2)
 			sa(&a);
 		else if (stack_len(a) == 3)
-			small_sort(&a);
+			sort_3(&a);
 		else
 			sort_it(&a, &b);
 	}

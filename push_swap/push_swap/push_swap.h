@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:14:57 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/26 15:54:16 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/10/27 00:45:25 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
+# include <limits.h>
 # include <stdbool.h>
 
 typedef struct node
@@ -52,5 +53,26 @@ void			rrr(t_node **a, t_node **b);
 t_node			*find_last(t_node **stack);
 int				stack_len(t_node *stack);
 bool			is_sorted(t_node *stack);
+t_node			*find_biggest(t_node *stack);
+t_node			*find_smallest(t_node *stack);
+
+// sorting
+void			sort_3(t_node **stack);
+void			sort_rest(t_node **a, t_node **b);
+void			initialize_a(t_node *a, t_node *b);
+void			initialize_b(t_node *a, t_node *b);
+
+// stack
+void			set_index(t_node *stack);
+void			set_target_a(t_node *a, t_node *b);
+void			set_target_b(t_node *a, t_node *b);
+void			set_cost_a(t_node *a, t_node *b);
+void			set_cheapest(t_node *stack);
+
+t_node			*find_last(t_node **stack);
+int				stack_len(t_node *stack);
+bool			is_sorted(t_node *stack);
+t_node			*find_biggest(t_node *stack);
+t_node			*find_smallest(t_node *stack);
 
 #endif
