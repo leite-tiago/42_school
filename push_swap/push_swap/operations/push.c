@@ -6,49 +6,37 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:09:15 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/12 00:03:30 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/10/26 15:26:56 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+/**
+ * Take the first element at the top of src and put it at the top of dest.
+ * Do nothing if src is empty.
+ */
 void	push(t_node **src, t_node **dest)
 {
-	t_node	*node_to_move;
+	t_node	*node;
 
 	if (!(*src))
 		return ;
-	node_to_move = *src;
-	pop(src);
-	if (*dest)
+	node = *src;
+	*src = (*src)->next;
+	if (*src)
+		(*src)->prev = NULL;
+	node->prev = NULL;
+	if (!*dest)
 	{
-		node_to_move->next = *dest;
-		node_to_move->prev = (*dest)->prev;
-		(*dest)->prev->next = node_to_move;
-		(*dest)->prev = node_to_move;
+		*dest = node;
+		node->next = NULL;
 	}
 	else
 	{
-		node_to_move->next = node_to_move;
-		node_to_move->prev = node_to_move;
-	}
-	*dest = node_to_move;
-}
-
-void	pop(t_node **stack)
-{
-	t_node	*last;
-
-	if (!(*stack))
-		return ;
-	if ((*stack)->next == *stack)
-		*stack = NULL;
-	else
-	{
-		last = (*stack)->prev;
-		*stack = (*stack)->next;
-		(*stack)->prev = last;
-		last->next = *stack;
+		node->next = *dest;
+		*dest = node;
+		node->next->prev = node;
 	}
 }
 
@@ -56,10 +44,10 @@ void	pop(t_node **stack)
  * (push a): Take the first element at the top of b and put it at the top of a.
  * Do nothing if b is empty.
  */
-void	pa(t_node **b, t_node **a)
+void	pa(t_node **a, t_node **b)
 {
 	push(b, a);
-	write(1, "pa\n", 3);
+	ft_printf("pa\n");
 }
 
 /**
@@ -69,5 +57,5 @@ void	pa(t_node **b, t_node **a)
 void	pb(t_node **a, t_node **b)
 {
 	push(a, b);
-	write(1, "pb\n", 3);
+	ft_printf("pb\n");
 }

@@ -6,15 +6,20 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:01:59 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/11 11:00:55 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/10/12 12:08:29 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
 void	reverse_rotate(t_node **stack)
 {
+	t_node	*last;
 
+	if (!(*stack) || (*stack)->next == *stack)
+		return ;
+	last = (*stack)->prev;
+	*stack = last;
 }
 
 /**
@@ -23,6 +28,9 @@ void	reverse_rotate(t_node **stack)
  */
 void	rra(t_node **a, bool print)
 {
+	reverse_rotate(a);
+	if (print)
+		write(1, "rra\n", 4);
 }
 
 /**
@@ -31,6 +39,9 @@ void	rra(t_node **a, bool print)
  */
 void	rrb(t_node **b, bool print)
 {
+	reverse_rotate(b);
+	if (print)
+		write(1, "rrb\n", 4);
 }
 
 /**

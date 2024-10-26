@@ -6,19 +6,23 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:01:59 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/23 13:01:13 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/10/26 15:33:43 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+/**
+ * Shift down all elements of stack given by 1.
+ * The last element becomes the first one.
+ */
 void	reverse_rotate(t_node **stack)
 {
-    t_node	*last;
+	t_node	*last;
 
 	if (!*stack || !(*stack)->next)
 		return ;
-	last = find_last_node(*stack);
+	last = find_last(*stack);
 	last->prev->next = NULL;
 	last->next = *stack;
 	last->prev = NULL;
@@ -30,22 +34,20 @@ void	reverse_rotate(t_node **stack)
  * (reverse rotate a): Shift down all elements of stack a by 1.
  * The last element becomes the first one.
  */
-void	rra(t_node **a, bool print)
+void	rra(t_node **a)
 {
 	reverse_rotate(a);
-	if (print)
-		write(1, "rra\n", 4);
+	ft_printf("rra\n");
 }
 
 /**
  * (reverse rotate b): Shift down all elements of stack b by 1.
  * The last element becomes the first one.
  */
-void	rrb(t_node **b, bool print)
+void	rrb(t_node **b)
 {
 	reverse_rotate(b);
-	if (print)
-		write(1, "rrb\n", 4);
+	ft_printf("rrb\n");
 }
 
 /**
@@ -53,7 +55,7 @@ void	rrb(t_node **b, bool print)
  */
 void	rrr(t_node **a, t_node **b)
 {
-	rra(a, false);
-	rrb(b, false);
-	write(1, "rrr\n", 4);
+	reverse_rotate(a);
+	reverse_rotate(b);
+	ft_printf("rrr\n");
 }

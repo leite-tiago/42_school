@@ -6,45 +6,48 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:11:14 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/11 23:48:42 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/10/26 15:34:04 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+/**
+ * Shift up all elements of stack given by 1.
+ * The first element becomes the last one.
+ */
 void	rotate(t_node **stack)
 {
-	if (!(*stack) || (*stack)->next == *stack)
+	t_node	*last;
+
+	if (!*stack || !(*stack)->next)
 		return ;
-	t_node *first = *stack;
-	t_node *last = first->prev;
-	*stack = first->next;
-	first->prev = last;
-	first->next = *stack;
-	last->next = first;
-	(*stack)->prev = first;
+	last = find_last(*stack);
+	last->next = *stack;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+	last->next->prev = last;
+	last->next->next = NULL;
 }
 
 /**
  * (rotate a): Shift up all elements of stack a by 1.
  * The first element becomes the last one.
  */
-void	ra(t_node **a, bool print)
+void	ra(t_node **a)
 {
 	rotate(a);
-	if (print)
-		write(1, "ra\n", 3);
+	ft_printf("ra\n");
 }
 
 /**
  * (rotate b): Shift up all elements of stack b by 1.
  * The first element becomes the last one.
  */
-void	rb(t_node **b, bool print)
+void	rb(t_node **b)
 {
 	rotate(b);
-	if (print)
-		write(1, "rb\n", 3);
+	ft_printf("rb\n");
 }
 
 /**
@@ -52,7 +55,7 @@ void	rb(t_node **b, bool print)
  */
 void	rr(t_node **a, t_node **b)
 {
-	ra(a, false);
-	rb(b, false);
-	write(1, "rr\n", 3);
+	rotate(a);
+	rotate(b);
+	ft_printf("rr\n");
 }

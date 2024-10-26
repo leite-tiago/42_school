@@ -6,46 +6,45 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:08:50 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/11 10:50:14 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/10/26 15:09:15 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+/**
+ * Swap the first 2 elements at the top of stack given.
+ * Do nothing if there is only one or no elements.
+ */
 void	swap(t_node **stack)
 {
-	t_node	*node;
-	int		tmp;
-
-	node = *stack; // node aponta para primeiro elemento
-	tmp = node->nb;	// tmp vai ficar com o numero do primeiro elemento
-	node->nb = node->next->nb; // primeiro elemento vai ficar com o numero do segundo
-	node->next->nb = tmp; // segundo elemento vai ficar com o numero do primeiro (trocaram numeros)
-	tmp = node->index; // tmp vai ficar com index do primeiro elemento
-	node->index = node->next->index; // primeiro elemento vai ficar com o index do segundo
-	node->next->index = tmp; // segundo elemento vai ficar com o indice do primeiro
+	*stack = (*stack)->next;
+	(*stack)->prev->prev = (*stack);
+	(*stack)->prev->next = (*stack)->next;
+	if ((*stack)->next)
+		(*stack)->next->prev = (*stack)->prev;
+	(*stack)->prev = NULL;
+	(*stack)->next = (*stack)->prev;
 }
 
 /**
  * (swap a): Swap the first 2 elements at the top of stack a.
  * Do nothing if there is only one or no elements.
  */
-void	sa(t_node **a, bool print)
+void	sa(t_node **a)
 {
 	swap(a);
-	if (print)
-		write(1, "sa\n", 3);
+	ft_printf("sa\n");
 }
 
 /**
  * (swap b): Swap the first 2 elements at the top of stack b.
  * Do nothing if there is only one or no elements.
  */
-void	sb(t_node **b, bool print)
+void	sb(t_node **b)
 {
 	swap(b);
-	if (print)
-		write(1, "sb\n", 3);
+	ft_printf("sb\n");
 }
 
 /**
@@ -53,7 +52,7 @@ void	sb(t_node **b, bool print)
  */
 void	ss(t_node **a, t_node **b)
 {
-	sa(a, false);
-	sb(b, false);
-	write(1, "ss\n", 3);
+	swap(a);
+	swap(b);
+	ft_printf("ss\n");
 }

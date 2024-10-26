@@ -6,11 +6,11 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:11:14 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/11 23:48:42 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/10/12 12:08:26 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
 void	rotate(t_node **stack)
 {

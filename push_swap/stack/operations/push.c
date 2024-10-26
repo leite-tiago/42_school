@@ -6,11 +6,11 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:09:15 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/12 00:03:30 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/10/12 12:08:32 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
 void	push(t_node **src, t_node **dest)
 {

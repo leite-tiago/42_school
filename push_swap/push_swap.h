@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:14:57 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/11 23:56:37 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/10/12 12:04:12 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 # include "ft_printf/ft_printf.h"
 # include "libft/libft.h"
 # include <stdbool.h>
-#include <stdio.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef struct node
 {
@@ -54,6 +56,13 @@ void			reverse_rotate(t_node **stack);
 void			rra(t_node **a, bool print);
 void			rrb(t_node **b, bool print);
 void			rrr(t_node **a, t_node **b);
+//
+
+// stack
+t_node			*create_node(int nb);
+void			push_node(t_node **stack, int nb);
+void			print_stack(t_node *stack);
+void			free_stack(t_node **stack);
 //
 
 #endif

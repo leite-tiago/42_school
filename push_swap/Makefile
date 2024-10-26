@@ -6,65 +6,67 @@
 #    By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/08 15:47:14 by tborges-          #+#    #+#              #
-#    Updated: 2024/10/10 19:55:12 by tborges-         ###   ########.fr        #
+#    Updated: 2024/10/14 21:03:21 by tborges-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Nome dos ficheiros de saída
-CLIENT = client
-SERVER = server
+# Nome do executável
+NAME = push_swap
 
-# Compilador e flags
+# Compilador
 CC = gcc
+
+# Flags de compilação
 CFLAGS = -Wall -Wextra -Werror
 
-# Diretórios das bibliotecas
+# Diretórios
+SRC_DIR = stack
+OPS_DIR = stack/operations
 LIBFT_DIR = libft
-PRINTF_DIR = printf
+PRINTF_DIR = ft_printf
 
-# Bibliotecas e headers
+# Arquivos de origem (src), incluindo o teste.c como um ficheiro normal
+SRC = $(OPS_DIR)/push.c \
+	  $(OPS_DIR)/reverse_rotate.c \
+	  $(OPS_DIR)/rotate.c \
+	  $(OPS_DIR)/swap.c \
+	  $(SRC_DIR)/stack_utils.c \
+	  push_swap.c \
+	  $(OPS_DIR)/teste.c
+
+# Arquivos de objeto (object files)
+OBJ = $(SRC:.c=.o)
+
+# Caminho das bibliotecas
 LIBFT = $(LIBFT_DIR)/libft.a
 PRINTF = $(PRINTF_DIR)/libftprintf.a
 
-# Ficheiros fontes
-CLIENT_SRC = client.c
-SERVER_SRC = server.c
+# Comandos principais
+all: $(NAME)
 
-# Ficheiros objetos
-CLIENT_OBJ = $(CLIENT_SRC:.c=.o)
-SERVER_OBJ = $(SERVER_SRC:.c=.o)
-
-# Regras padrão (compilar bibliotecas e ambos client e server)
-all: $(LIBFT) $(PRINTF) $(CLIENT) $(SERVER)
-
-# Regras para compilar client e server
-$(CLIENT): $(CLIENT_OBJ)
-	$(CC) $(CFLAGS) -o $(CLIENT) $(CLIENT_OBJ) -L$(PRINTF_DIR) -lftprintf -L$(LIBFT_DIR) -lft
-
-$(SERVER): $(SERVER_OBJ)
-	$(CC) $(CFLAGS) -o $(SERVER) $(SERVER_OBJ) -L$(PRINTF_DIR) -lftprintf -L$(LIBFT_DIR) -lft
+# Compilação do push_swap
+$(NAME): $(OBJ) $(LIBFT) $(PRINTF)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(PRINTF) -o $(NAME)
 
 # Compilar a libft
 $(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
+	@make -C $(LIBFT_DIR)
 
 # Compilar o ft_printf
 $(PRINTF):
-	$(MAKE) -C $(PRINTF_DIR)
+	@make -C $(PRINTF_DIR)
 
-# Limpar ficheiros objeto e binários gerados
+# Limpar arquivos objeto
 clean:
-	rm -f $(CLIENT_OBJ) $(SERVER_OBJ)
-	$(MAKE) -C $(LIBFT_DIR) clean
-	$(MAKE) -C $(PRINTF_DIR) clean
+	@make clean -C $(LIBFT_DIR)
+	@make clean -C $(PRINTF_DIR)
+	rm -f $(OBJ)
 
+# Limpar tudo, incluindo o executável
 fclean: clean
-	rm -f $(CLIENT) $(SERVER)
-	$(MAKE) -C $(LIBFT_DIR) fclean
-	$(MAKE) -C $(PRINTF_DIR) fclean
+	@make fclean -C $(LIBFT_DIR)
+	@make fclean -C $(PRINTF_DIR)
+	rm -f $(NAME)
 
 # Recompilar tudo
 re: fclean all
-
-# Regra de phony para evitar conflitos com ficheiros reais
-.PHONY: all clean fclean re
