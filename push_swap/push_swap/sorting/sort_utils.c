@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 00:57:54 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/29 01:15:06 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/10/29 01:34:08 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /**
  * Moves the smallest node to the top of the stack.
  */
-static void	smallest_to_top(t_node **a)
+void	smallest_to_top(t_node **a)
 {
 	while ((*a)->nb != find_smallest(*a)->nb)
 	{

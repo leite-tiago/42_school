@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 00:57:43 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/29 01:16:56 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/10/29 01:33:21 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ void	set_cheapest(t_node *stack)
 
 	if (!stack)
 		return ;
+	cheapest_node = NULL;
 	cheapest_node->cost = LONG_MAX;
 	while (stack)
 	{

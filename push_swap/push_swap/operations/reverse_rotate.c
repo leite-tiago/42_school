@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:01:59 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/26 15:33:43 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/10/29 01:35:55 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	reverse_rotate(t_node **stack)
 
 	if (!*stack || !(*stack)->next)
 		return ;
-	last = find_last(*stack);
+	last = find_last(stack);
 	last->prev->next = NULL;
 	last->next = *stack;
 	last->prev = NULL;

@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 00:59:51 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/29 01:15:55 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/10/29 01:32:50 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ t_node	*find_biggest(t_node *stack)
 
 	if (!stack)
 		return (NULL);
+	biggest = NULL;
 	biggest->nb = LONG_MIN;
 	while (stack)
 	{

@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 00:57:50 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/29 01:15:00 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/10/29 01:35:06 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ void	sort_rest(t_node **a, t_node **b)
 		pb(a, b);
 	while (a_len-- > 3 && !is_sorted(*a))
 	{
-		initialize_a(*a, *b);
+		set_all_a(*a, *b);
 		move_cheapest_to_b(a, b);
 	}
 	sort_3(a);
 	while (*b)
 	{
-		initialize_b(*a, *b);
+		set_all_b(*a, *b);
 		move_target_to_a(a, b);
 	}
 	set_index(*a);

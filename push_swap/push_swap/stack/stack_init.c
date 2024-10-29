@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 00:57:39 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/29 01:26:46 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/10/29 01:30:17 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	new_node(t_node **a, int n)
 	}
 	else
 	{
-		last = find_last(*a);
+		last = find_last(a);
 		last->next = node;
 		node->prev = last;
 	}
