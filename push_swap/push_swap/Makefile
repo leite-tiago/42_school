@@ -6,7 +6,7 @@
 #    By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/08 15:47:14 by tborges-          #+#    #+#              #
-#    Updated: 2024/10/23 11:21:23 by tborges-         ###   ########.fr        #
+#    Updated: 2024/10/29 01:18:11 by tborges-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,11 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SOURCE = operations/*.c \
-         sorting/*.c \
-         utils/*.c \
-         main.c
+SOURCE = arguments/*.c \
+		operations/*.c \
+		sorting/*.c \
+		stack/*.c \
+		push_swap.c
 
 LIBFT_DIR = libft
 LIBFT_LIB = $(LIBFT_DIR)/libft.a
@@ -34,9 +35,10 @@ $(LIBFT_LIB):
 
 clean:
 	rm -rf *.o
+	rm -rf arguments/*.o \
 	rm -rf operations/*.o
-	rm -rf sorting/*.o
-	rm -rf utils/*.o
+	rm -rf sorting/*.o \
+	rm -rf stack/*.o \
 	$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean: clean

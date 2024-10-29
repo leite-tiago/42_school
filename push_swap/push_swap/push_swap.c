@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 23:48:56 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/26 22:56:41 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/10/28 17:29:40 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ int	main(int argc, char *argv[])
 	b = NULL;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
-	args = ft_cut(argv + 1);
-	initstack_a(&a, args);
+	args = treat_args(argv + 1);
+	initialize_a(&a, args);
 	if (!is_sorted(a))
 	{
 		if (stack_len(a) == 2)
@@ -100,9 +100,9 @@ int	main(int argc, char *argv[])
 		else if (stack_len(a) == 3)
 			sort_3(&a);
 		else
-			sort_it(&a, &b);
+			sort_rest(&a, &b);
 	}
-	free_s(&a);
+	free_stack(&a);
 	free_args(args);
 	return (0);
 }

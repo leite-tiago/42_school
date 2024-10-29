@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/26 19:53:17 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/27 11:14:47 by tborges-         ###   ########.fr       */
+/*   Created: 2024/10/29 00:57:43 by tborges-          #+#    #+#             */
+/*   Updated: 2024/10/29 01:16:56 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 /**
  * This function is going to iterate the stack and initialize the index's

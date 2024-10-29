@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/27 11:03:58 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/27 11:11:10 by tborges-         ###   ########.fr       */
+/*   Created: 2024/10/29 00:59:51 by tborges-          #+#    #+#             */
+/*   Updated: 2024/10/29 01:15:55 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 /**
  * This funciton will return the cheapest node on the stack.

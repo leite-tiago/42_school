@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/26 15:11:31 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/27 11:14:53 by tborges-         ###   ########.fr       */
+/*   Created: 2024/10/29 00:57:47 by tborges-          #+#    #+#             */
+/*   Updated: 2024/10/29 01:17:46 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 /**
  * Calculate the lenght of the stack.
@@ -44,4 +44,20 @@ bool	is_sorted(t_node *stack)
 		stack = stack->next;
 	}
 	return (true);
+}
+
+/**
+ * Verifys if a node is a duplicate.
+ */
+bool	is_duplicate(t_node *a, int n)
+{
+	if (!a)
+		return (false);
+	while (a)
+	{
+		if (a->nb == n)
+			return (true);
+		a = a->next;
+	}
+	return (false);
 }
