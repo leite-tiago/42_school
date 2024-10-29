@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 00:59:51 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/29 01:32:50 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/10/29 20:25:34 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,18 @@ t_node	*find_last(t_node **stack)
 t_node	*find_biggest(t_node *stack)
 {
 	t_node	*biggest;
+	long	current_biggest;
 
 	if (!stack)
 		return (NULL);
-	biggest = NULL;
-	biggest->nb = LONG_MIN;
+	current_biggest = LONG_MIN;
 	while (stack)
 	{
-		if (stack->nb > biggest->nb)
+		if (stack->nb > current_biggest)
+		{
+			current_biggest = stack->nb;
 			biggest = stack;
+		}
 		stack = stack->next;
 	}
 	return (biggest);
@@ -70,14 +73,18 @@ t_node	*find_biggest(t_node *stack)
 t_node	*find_smallest(t_node *stack)
 {
 	t_node	*smallest;
+	long	current_smallest;
 
 	if (!stack)
 		return (NULL);
-	smallest->nb = LONG_MAX;
+	current_smallest = LONG_MAX;
 	while (stack)
 	{
-		if (stack->nb > smallest->nb)
+		if (stack->nb < current_smallest)
+		{
+			current_smallest = stack->nb;
 			smallest = stack;
+		}
 		stack = stack->next;
 	}
 	return (smallest);

@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 00:57:43 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/29 01:33:21 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/10/29 23:40:34 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,22 @@ void	set_target_a(t_node *a, t_node *b)
 {
 	t_node	*current;
 	t_node	*target;
+	long	current_best_value;
 
 	while (a)
 	{
-		target->nb = LONG_MIN;
+		current_best_value = LONG_MIN;
 		current = b;
 		while (current)
 		{
-			if ((current->nb < a->nb) && (current->nb > target->nb))
+			if ((current->nb < a->nb) && (current->nb > current_best_value))
+			{
+				current_best_value = current->nb;
 				target = current;
+			}
 			current = current->next;
 		}
-		if (target->nb == LONG_MIN)
+		if (current_best_value == LONG_MIN)
 			a->target = find_smallest(b);
 		else
 			a->target = target;
@@ -77,18 +81,22 @@ void	set_target_b(t_node *a, t_node *b)
 {
 	t_node	*current;
 	t_node	*target;
+	long	current_best_value;
 
 	while (b)
 	{
-		target->nb = LONG_MIN;
+		current_best_value = LONG_MIN;
 		current = a;
 		while (current)
 		{
-			if ((current->nb < b->nb) && (current->nb > target->nb))
+			if ((current->nb < b->nb) && (current->nb > current_best_value))
+			{
+				current_best_value = current->nb;
 				target = current;
+			}
 			current = current->next;
 		}
-		if (target->nb == LONG_MIN)
+		if (current_best_value == LONG_MIN)
 			b->target = find_smallest(a);
 		else
 			b->target = target;
@@ -126,17 +134,19 @@ void	set_cost_a(t_node *a, t_node *b)
  */
 void	set_cheapest(t_node *stack)
 {
-	long	val;
+	long	current_cheapest;
 	t_node	*cheapest_node;
 
 	if (!stack)
 		return ;
-	cheapest_node = NULL;
-	cheapest_node->cost = LONG_MAX;
+	current_cheapest = LONG_MAX;
 	while (stack)
 	{
-		if (stack->cost < cheapest_node->cost)
+		if (stack->cost < current_cheapest)
+		{
+			current_cheapest = stack->cost;
 			cheapest_node = stack;
+		}
 		stack = stack->next;
 	}
 	cheapest_node->cheapest = true;
