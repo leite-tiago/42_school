@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:08:50 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/26 15:09:15 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/10/31 19:16:15 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	swap(t_node **stack)
 	(*stack)->prev->next = (*stack)->next;
 	if ((*stack)->next)
 		(*stack)->next->prev = (*stack)->prev;
-	(*stack)->prev = NULL;
 	(*stack)->next = (*stack)->prev;
+	(*stack)->prev = NULL;
 }
 
 /**

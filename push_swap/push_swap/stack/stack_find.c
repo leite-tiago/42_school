@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 00:59:51 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/29 20:25:34 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/10/31 20:19:27 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ t_node	*find_cheapest(t_node *stack)
 /**
  * This function will return the last node on the stack.
  */
-t_node	*find_last(t_node **stack)
+t_node	*find_last(t_node *stack)
 {
 	t_node	*current;
 
-	current = *stack;
+	current = stack;
 	if (current != NULL)
 	{
 		while (current->next != NULL)

@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 00:57:54 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/29 01:34:08 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/10/31 19:46:52 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,19 +82,16 @@ void	align_cheapest_to_target(t_node **a, t_node **b, t_node *cheapest_node,
  */
 void	bring_to_top(t_node **stack, t_node *top, char which_stack)
 {
-	if (which_stack == 'a')
+	while (*stack != top)
 	{
-		while (*stack != top)
+		if (which_stack == 'a')
 		{
 			if (top->up_mid)
 				ra(stack);
 			else
 				rra(stack);
 		}
-	}
-	else if (which_stack == 'b')
-	{
-		while (*stack != top)
+		else if (which_stack == 'b')
 		{
 			if (top->up_mid)
 				rb(stack);

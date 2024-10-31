@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:14:57 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/29 01:00:45 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/10/31 20:20:20 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ bool			is_duplicate(t_node *a, int n);
 
 // stack find
 t_node			*find_cheapest(t_node *stack);
-t_node			*find_last(t_node **stack);
+t_node			*find_last(t_node *stack);
 t_node			*find_biggest(t_node *stack);
 t_node			*find_smallest(t_node *stack);
 
@@ -96,6 +96,6 @@ void			free_stack(t_node **stack);
 
 // utils
 long			ft_atol(const char *str);
-char			*ft_strcat(char *dest, const char *src);
+// char			*ft_strcat(char *dest, const char *src);
 
 #endif

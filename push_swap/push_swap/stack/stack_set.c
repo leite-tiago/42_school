@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 00:57:43 by tborges-          #+#    #+#             */
-/*   Updated: 2024/10/29 23:40:34 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/10/31 22:48:07 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	set_target_a(t_node *a, t_node *b)
 	t_node	*target;
 	long	current_best_value;
 
+	target = NULL;
 	while (a)
 	{
 		current_best_value = LONG_MIN;
@@ -85,18 +86,18 @@ void	set_target_b(t_node *a, t_node *b)
 
 	while (b)
 	{
-		current_best_value = LONG_MIN;
+		current_best_value = LONG_MAX;
 		current = a;
 		while (current)
 		{
-			if ((current->nb < b->nb) && (current->nb > current_best_value))
+			if ((current->nb > b->nb) && (current->nb < current_best_value))
 			{
 				current_best_value = current->nb;
 				target = current;
 			}
 			current = current->next;
 		}
-		if (current_best_value == LONG_MIN)
+		if (current_best_value == LONG_MAX)
 			b->target = find_smallest(a);
 		else
 			b->target = target;
