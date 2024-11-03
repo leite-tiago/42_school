@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 15:55:31 by tborges-          #+#    #+#             */
-/*   Updated: 2024/05/08 22:45:13 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/10/23 10:49:41 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include "ft_printf/ft_printf.h"
 
 typedef struct s_list
 {
