@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 00:57:36 by tborges-          #+#    #+#             */
-/*   Updated: 2024/11/04 14:13:24 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/11/04 14:28:51 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char	**treat_args(char *argv[])
  */
 void	verify_null(int argc, char *argv1)
 {
-	if (argc == 2 && !argv1[0])
+	if (argc == 1 || (argc == 2 && !argv1[0]))
 	{
 		write(2, "Error\n", 6);
 		exit(1);
