@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 23:48:56 by tborges-          #+#    #+#             */
-/*   Updated: 2024/11/03 19:10:13 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/11/04 14:11:39 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ int	main(int argc, char *argv[])
 
 	a = NULL;
 	b = NULL;
-	if (argc == 1 || (argc == 2 && !argv[1][0]))
+	if (argc == 1)
 		return (1);
+	verify_null(argc, argv[1]);
 	args = treat_args(argv + 1);
 	initialize_a(&a, args);
 	if (!is_sorted(a))

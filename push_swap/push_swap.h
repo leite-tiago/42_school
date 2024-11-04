@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 22:14:57 by tborges-          #+#    #+#             */
-/*   Updated: 2024/11/03 19:09:58 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/11/04 14:14:05 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,10 @@ t_node			*find_last(t_node *stack);
 t_node			*find_biggest(t_node *stack);
 t_node			*find_smallest(t_node *stack);
 
-// arguments
+// error
 bool			is_valid_input(char *str);
 char			**treat_args(char *argv[]);
+void			verify_null(int argc, char *argv1);
 
 // frees
 void			free_all(t_node **stack);

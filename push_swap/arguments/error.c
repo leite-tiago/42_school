@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 00:57:36 by tborges-          #+#    #+#             */
-/*   Updated: 2024/11/04 13:08:03 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/11/04 14:13:24 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ bool	is_valid_input(char *str)
 	return (true);
 }
 
+/**
+ * Transform args into an array of strings in which each string is a number.
+ */
 char	**treat_args(char *argv[])
 {
 	int		i;
@@ -55,4 +58,16 @@ char	**treat_args(char *argv[])
 	res = ft_split(temp, ' ');
 	free(temp);
 	return (res);
+}
+
+/**
+ * Verify if the input is null
+ */
+void	verify_null(int argc, char *argv1)
+{
+	if (argc == 2 && !argv1[0])
+	{
+		write(2, "Error\n", 6);
+		exit(1);
+	}
 }
