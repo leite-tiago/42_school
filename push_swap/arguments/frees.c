@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 00:57:57 by tborges-          #+#    #+#             */
-/*   Updated: 2024/11/03 19:20:40 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:08:36 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 void	free_all(t_node **stack)
 {
 	free_stack(stack);
-	ft_printf("Error\n");
+	write(2, "Error\n", 6);
 	exit(1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 00:57:36 by tborges-          #+#    #+#             */
-/*   Updated: 2024/11/03 19:10:45 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:08:03 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ bool	is_valid_input(char *str)
 		return (false);
 	if (str[0] == '-' || str[0] == '+')
 		i++;
+	if (!str[i])
+		return (false);
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
