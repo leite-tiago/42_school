@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 21:02:33 by tborges-          #+#    #+#             */
-/*   Updated: 2024/11/16 21:04:24 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/11/16 21:32:38 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,6 @@ typedef struct s_data
 	int		line_length;
 	int		endian;
 }			t_data;
-
-/**
- * The line_length differs from the actual window width.
- * We therefore should ALWAYS calculate the memory offset
- * using the line length set by mlx_get_data_addr.
- *
- * int offset = (y * line_length + x * (bits_per_pixel / 8));
- */
-
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
