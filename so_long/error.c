@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 21:02:14 by tborges-          #+#    #+#             */
-/*   Updated: 2024/11/18 17:33:36 by tborges-         ###   ########.fr       */
+/*   Created: 2024/11/18 17:31:57 by tborges-          #+#    #+#             */
+/*   Updated: 2024/11/18 17:33:02 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
+#include "so_long.h"
 
-// events
-enum {
-	ON_KEYDOWN = 2,
-	ON_KEYUP = 3,
-	ON_MOUSEDOWN = 4,
-	ON_MOUSEUP = 5,
-	ON_MOUSEMOVE = 6,
-	ON_EXPOSE = 12,
-	ON_DESTROY = 17
-};
-
-
-// error
-void	end_program();
+void	end_program()
+{
+	write(2, "Error\n", 6);
+	exit(1);
+}
