@@ -41,29 +41,3 @@ int	main(void)
 
 // usage:
 // mlx_hook(vars.win, ON_DESTROY, 0, close, &vars);
-
-
-// código para descobrir keycodes
-// #include <mlx.h>
-// #include <stdio.h> // Para printf
-
-// typedef struct s_vars {
-// 	void	*mlx;
-// 	void	*win;
-// }				t_vars;
-
-// int	key_press(int keycode, t_vars *vars)
-// {
-// 	printf("Key pressed: %d\n", keycode); // Exibe o keycode da tecla pressionada
-// 	return (0);
-// }
-
-// int	main(void)
-// {
-// 	t_vars	vars;
-
-// 	vars.mlx = mlx_init();
-// 	vars.win = mlx_new_window(vars.mlx, 800, 600, "Keycode Finder");
-// 	mlx_hook(vars.win, 2, 1L<<0, key_press, &vars); // Evento de tecla pressionada
-// 	mlx_loop(vars.mlx);
-// }
