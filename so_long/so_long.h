@@ -6,16 +6,18 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 21:02:14 by tborges-          #+#    #+#             */
-/*   Updated: 2024/11/19 11:29:27 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/11/19 12:47:02 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/libft.h"
 #include <mlx.h>
-#include <unistd.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 // events
-enum {
+enum
+{
 	ON_KEYDOWN = 2,
 	ON_KEYUP = 3,
 	ON_MOUSEDOWN = 4,
@@ -25,6 +27,5 @@ enum {
 	ON_DESTROY = 17
 };
 
-
 // error
-void	end_program();
+void	end_program(void);

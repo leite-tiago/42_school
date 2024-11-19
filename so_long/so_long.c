@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 21:02:33 by tborges-          #+#    #+#             */
-/*   Updated: 2024/11/19 11:31:42 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/11/19 11:33:56 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int main(void)
 	t_vars	vars;
 
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 800, 600, "Close Event");
+	vars.win = mlx_new_window(vars.mlx, 800, 600, "so_long");
 
 	mlx_hook(vars.win, ON_DESTROY, 0, close_window, &vars);
 	mlx_hook(vars.win, ON_KEYDOWN, 1L<<0, handle_keypress, &vars);
