@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 12:12:48 by tborges-          #+#    #+#             */
-/*   Updated: 2024/11/19 12:12:50 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/11/19 14:31:12 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ typedef struct s_map {
 	int		count_c; // Contador de 'C'
 }				t_map;
 
-// Função para liberar a memória do mapa
+/**
+ * Frees the memory used by the map.
+ */
 void	free_map(t_map *map)
 {
 	for (int i = 0; i < map->rows; i++)
@@ -34,13 +36,17 @@ void	free_map(t_map *map)
 	free(map->data);
 }
 
-// Função para verificar se um caractere é válido
+/**
+ * Verifies if a char is a valid map element.
+ */
 int	is_valid_char(char c)
 {
 	return (c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P');
 }
 
-// Função para ler o mapa de um arquivo
+/**
+ * Reads the map from the file.
+ */
 t_map	read_map(const char *file)
 {
 	t_map	map = {0};
@@ -50,10 +56,7 @@ t_map	read_map(const char *file)
 	ssize_t	read;
 
 	if (fd < 0)
-	{
-		perror("Error opening file");
-		exit(1);
-	}
+		end_program();
 
 	// Ler linhas do arquivo
 	while ((read = getline(&line, &len, fdopen(fd, "r"))) != -1)
