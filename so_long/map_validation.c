@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 12:12:48 by tborges-          #+#    #+#             */
-/*   Updated: 2024/11/19 18:18:08 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/11/19 19:02:30 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ t_map	read_map(const char *file)
 /**
  * Checks if the map is surrounded by walls.
  */
-void	validate_borders(t_map *map)
+bool	is_surrounde_by_walls(t_map *map)
 {
 	int i;
 
@@ -127,22 +127,17 @@ void	validate_borders(t_map *map)
 	while (i < map->cols)
 	{
 		if (map->data[0][i] != '1' || map->data[map->rows - 1][i] != '1')
-		{
-			write(2, "Error: Map is not surrounded by walls\n", 37);
-			exit(1);
-		}
+			return false;
 		i++;
 	}
 	i = 0;
 	while (i < map->rows)
 	{
 		if (map->data[i][0] != '1' || map->data[i][map->cols - 1] != '1')
-		{
-			write(2, "Error: Map is not surrounded by walls\n", 37);
-			exit(1);
-		}
+			return false;
 		i++;
 	}
+	return true;
 }
 
 /**
@@ -155,8 +150,16 @@ void	validate_map(t_map *map)
 		write(2, "Error: Invalid map (missing P, E, or C)\n", 41);
 		exit(1);
 	}
-
-	validate_borders(map);
+	if (!is_rectangle(map))
+	{
+		write(2, "Error: Map is not rectangular\n", 34);
+		exit(1);
+	}
+	if (!is_rectangle(map))
+	{
+		write(2, "Error: Map is not surrounded by walls\n", 37);
+		exit(1);
+	}
 }
 
 int	main(int argc, char **argv)
