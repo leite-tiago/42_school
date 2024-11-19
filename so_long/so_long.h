@@ -6,12 +6,13 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 21:02:14 by tborges-          #+#    #+#             */
-/*   Updated: 2024/11/19 12:47:02 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/11/19 16:45:24 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include <mlx.h>
+#include <stdbool.h>
 #include <stdlib.h>
 #include <unistd.h>
 

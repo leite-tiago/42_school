@@ -6,7 +6,7 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 12:12:48 by tborges-          #+#    #+#             */
-/*   Updated: 2024/11/19 14:31:12 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/11/19 18:18:08 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
-
-#define VALID_CHARS "01CEP"
+#include "so_long.h"
 
 typedef struct s_map {
 	char	**data; // Armazena o mapa
@@ -39,88 +38,124 @@ void	free_map(t_map *map)
 /**
  * Verifies if a char is a valid map element.
  */
-int	is_valid_char(char c)
+bool	is_valid_char(char c)
 {
 	return (c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P');
 }
+
+/**
+ * Verifies if the map is a rectangle, this means that
+ * every row should have the same amount of collumns
+ * and number of collums must me bigger than the number of
+ * rows.
+ */
+bool	is_rectangle(t_map *map)
+{
+	int row;
+	int current_col;
+	int col;
+
+	row = 0;
+	while (map->data[row] != NULL)
+	{
+		current_col = 0;
+		while (map->data[row][current_col] != '\0')
+		{
+			current_col++;
+		}
+		if (row == 0)
+			col = current_col;
+		if (current_col != col)
+			return false;
+		col = current_col;
+	}
+	if (col <= row)
+		return false;
+	return true;
+}
+
 
 /**
  * Reads the map from the file.
  */
 t_map	read_map(const char *file)
 {
-	t_map	map = {0};
-	int		fd = open(file, O_RDONLY);
-	char	*line = NULL;
-	size_t	len = 0;
-	ssize_t	read;
+	int		fd;
+	char	*current_line;
+	t_map	map;
+	int row;
+	int col;
 
+	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		end_program();
-
-	// Ler linhas do arquivo
-	while ((read = getline(&line, &len, fdopen(fd, "r"))) != -1)
+	current_line = get_next_line(fd);
+	row = 0;
+	while (current_line != NULL)
 	{
-		if (map.rows == 0)
-			map.cols = read - 1; // Determina o comprimento inicial (desconsidera '\n')
-		else if (read - 1 != map.cols)
-		{
-			fprintf(stderr, "Error: Map is not rectangular\n");
-			exit(1);
-		}
+		col = 0;
+		while (current_line[col] != '\0')
+			map.data[row][col] = current_line[col++];
+		map.data[row][col] = '\0';
+		current_line = get_next_line(fd);
+		row++;
+	}
 
-		// Aloca espaço para armazenar a linha
-		map.data = realloc(map.data, sizeof(char *) * (map.rows + 1));
-		map.data[map.rows] = malloc(sizeof(char) * (map.cols + 1));
-		for (int i = 0; i < map.cols; i++)
-		{
-			if (!is_valid_char(line[i]))
-			{
-				fprintf(stderr, "Error: Invalid character in map\n");
-				exit(1);
-			}
-			map.data[map.rows][i] = line[i];
-			if (line[i] == 'P') map.count_p++;
-			if (line[i] == 'E') map.count_e++;
-			if (line[i] == 'C') map.count_c++;
-		}
-		map.data[map.rows][map.cols] = '\0';
+	map.rows = 0;
+	while (current_line != NULL)
+	{
+		map.cols = 0;
+		while (current_line[map.cols] != '\0')
+			map.cols++;
+		current_line = get_next_line(fd);
 		map.rows++;
 	}
-	free(line);
+	free(current_line);
 	close(fd);
-
 	return (map);
 }
 
-// Função para verificar se o mapa é cercado por paredes
+
+/**
+ * Checks if the map is surrounded by walls.
+ */
 void	validate_borders(t_map *map)
 {
-	for (int i = 0; i < map->cols; i++)
+	int i;
+
+	i = 0;
+	while (i < map->cols)
+	{
 		if (map->data[0][i] != '1' || map->data[map->rows - 1][i] != '1')
 		{
-			fprintf(stderr, "Error: Map is not surrounded by walls\n");
+			write(2, "Error: Map is not surrounded by walls\n", 37);
 			exit(1);
 		}
-	for (int i = 0; i < map->rows; i++)
+		i++;
+	}
+	i = 0;
+	while (i < map->rows)
+	{
 		if (map->data[i][0] != '1' || map->data[i][map->cols - 1] != '1')
 		{
-			fprintf(stderr, "Error: Map is not surrounded by walls\n");
+			write(2, "Error: Map is not surrounded by walls\n", 37);
 			exit(1);
 		}
+		i++;
+	}
 }
 
-// Função principal para validação do mapa
+/**
+ * Validates whether the map meets all necessary conditions.
+ */
 void	validate_map(t_map *map)
 {
-	// Checa condições obrigatórias
 	if (map->count_p != 1 || map->count_e != 1 || map->count_c < 1)
 	{
-		fprintf(stderr, "Error: Invalid map (missing P, E, or C)\n");
+		write(2, "Error: Invalid map (missing P, E, or C)\n", 41);
 		exit(1);
 	}
 
-	// Valida bordas
 	validate_borders(map);
 }
 
