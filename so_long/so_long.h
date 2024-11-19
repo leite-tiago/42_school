@@ -6,11 +6,13 @@
 /*   By: tborges- <tborges-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 21:02:14 by tborges-          #+#    #+#             */
-/*   Updated: 2024/11/18 17:33:36 by tborges-         ###   ########.fr       */
+/*   Updated: 2024/11/19 11:29:27 by tborges-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
+#include <unistd.h>
+#include <stdlib.h>
 
 // events
 enum {
